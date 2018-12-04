@@ -1,3 +1,10 @@
 {
-  "components.home.notice": "notice"
+  "components.home.notice": "notice",
+  "components.home.welfareZone": "Welfare zone",
+  "components.home.haveDomain": "have domain",
+  "components.home.needDomain": "need domain",
+  "components.home.wantBuy": "want buy",
+  "components.home.table.domain": "domain",
+  "components.home.table.cost": "cost",
+  "components.home.table.status": "status"
 }

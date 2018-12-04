@@ -70,9 +70,12 @@ export default {
   }
 }
 </script>
-<style lang="less">
+<style lang="less" scoped>
 .menu-title {
   color: #888;
+}
+.iconfont {
+  font-size: 22px;
 }
 </style>
 

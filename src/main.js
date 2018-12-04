@@ -79,6 +79,8 @@ function initHeaderConfig (myrouter) {
     showMore: true
   })
   store.commit(types.COM_NAV_TITLE, myrouter.meta.title)
+  // 设置title
+  document.title = finalLocales[langType][myrouter.meta.title]
   store.commit(types.COM_NAV_ON_CLICK_MORE, () => {
     store.commit(types.COM_NAV_SHOWMENU, true)
   })
