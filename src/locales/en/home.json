@@ -6,5 +6,20 @@
   "components.home.wantBuy": "want buy",
   "components.home.table.domain": "domain",
   "components.home.table.cost": "cost",
-  "components.home.table.status": "status"
+  "components.home.table.status": "status",
+  "components.home.form.domain": "domain",
+  "components.home.form.cost": "cost",
+  "components.home.form.account": "account",
+  "components.home.form.qq": "QQ",
+  "components.home.form.wx": "wechat ID",
+  "components.home.form.phone": "phone",
+  "components.home.form.submit": "submit",
+  "components.home.form.prefix": "please input",
+  "components.home.form2.domain": "domain",
+  "components.home.form2.cost": "cost",
+  "components.home.form2.account": "account",
+  "components.home.form2.qq": "QQ",
+  "components.home.form2.wx": "wechat ID",
+  "components.home.form2.phone": "phone",
+  "components.home.form2.submit": "appointment"
 }

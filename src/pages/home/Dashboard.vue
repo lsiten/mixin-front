@@ -49,11 +49,30 @@
           </div>
           <!-- 有域名 -->
           <div class="lsiten-tab-item lsiten-tab-2" v-if="showSelect === 1">
-            tab2
+            <group>
+              <x-input :title="$t('components.home.form.domain')" :placeholder="$t('components.home.form.prefix') + $t('components.home.form.domain')" novalidate v-model="haveForm.domain"></x-input>
+              <x-input :title="$t('components.home.form.account')" :placeholder="$t('components.home.form.prefix') + $t('components.home.form.account')" novalidate v-model="haveForm.account"></x-input>
+              <x-input :title="$t('components.home.form.cost')" :placeholder="$t('components.home.form.prefix') + $t('components.home.form.cost')" novalidate v-model="haveForm.cost"></x-input>
+              <x-input :title="$t('components.home.form.qq')" :placeholder="$t('components.home.form.prefix') + $t('components.home.form.qq')" novalidate v-model="haveForm.qq"></x-input>
+              <x-input :title="$t('components.home.form.wx')" :placeholder="$t('components.home.form.prefix') + $t('components.home.form.wx')" novalidate v-model="haveForm.weixin"></x-input>              
+              <x-input :title="$t('components.home.form.phone')" :placeholder="$t('components.home.form.prefix') + $t('components.home.form.phone')" novalidate v-model="haveForm.phone"></x-input>              
+            </group>
+            <group>
+               <x-button type="primary" >{{$t('components.home.form.submit')}}</x-button>
+            </group>
           </div>
           <!-- 要域名 -->
           <div class="lsiten-tab-item lsiten-tab-3" v-if="showSelect === 2">
-            tab3
+            <group>
+              <x-input :title="$t('components.home.form2.domain')" :placeholder="$t('components.home.form.prefix') + $t('components.home.form2.domain')" novalidate v-model="needForm.domain"></x-input>
+              <x-input :title="$t('components.home.form2.account')" :placeholder="$t('components.home.form.prefix') + $t('components.home.form2.account')" novalidate v-model="needForm.account"></x-input>
+              <x-input :title="$t('components.home.form2.qq')" :placeholder="$t('components.home.form.prefix') + $t('components.home.form2.qq')" novalidate v-model="needForm.qq"></x-input>
+              <x-input :title="$t('components.home.form2.wx')" :placeholder="$t('components.home.form.prefix') + $t('components.home.form2.wx')" novalidate v-model="needForm.weixin"></x-input>              
+              <x-input :title="$t('components.home.form2.phone')" :placeholder="$t('components.home.form.prefix') + $t('components.home.form2.phone')" novalidate v-model="needForm.phone"></x-input>              
+            </group>
+            <group>
+               <x-button type="primary" >{{$t('components.home.form2.submit')}}</x-button>
+            </group>
           </div>
         </div>
       </scroller>
@@ -65,7 +84,7 @@
 </template>
 
 <script>
-import { Radio, Group, Swiper, SwiperItem, Cell, Marquee, MarqueeItem, Scroller, ButtonTab, ButtonTabItem, XTable } from 'vux'
+import { Radio, Group, Swiper, SwiperItem, Cell, Marquee, MarqueeItem, Scroller, ButtonTab, ButtonTabItem, XTable, XInput, XButton } from 'vux'
 
 const baseList = [{
   url: 'javascript:',
@@ -228,7 +247,9 @@ export default {
     Scroller,
     ButtonTab,
     ButtonTabItem,
-    XTable
+    XTable,
+    XInput,
+    XButton
   },
   mounted () {
     let _this = this
@@ -265,7 +286,22 @@ export default {
           title: '测试3'
         }
       ],
-      domains: bastDataDomain
+      domains: bastDataDomain,
+      haveForm: {
+        domain: '',
+        account: '',
+        cost: '',
+        qq: '',
+        weixin: '',
+        phone: ''
+      },
+      needForm: {
+        domain: '',
+        account: '',
+        qq: '',
+        weixin: '',
+        phone: ''
+      }
     }
   },
   created () {

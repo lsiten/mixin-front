@@ -6,5 +6,20 @@
   "components.home.wantBuy": "我要买",
   "components.home.table.domain": "域名",
   "components.home.table.cost": "费用",
-  "components.home.table.status": "状态"
+  "components.home.table.status": "状态",
+  "components.home.form.domain": "域名",
+  "components.home.form.cost": "费用",
+  "components.home.form.account": "账号",
+  "components.home.form.qq": "QQ",
+  "components.home.form.wx": "微信",
+  "components.home.form.phone": "电话",
+  "components.home.form.submit": "发布",
+  "components.home.form.prefix": "请输入",
+  "components.home.form2.domain": "域名",
+  "components.home.form2.cost": "费用",
+  "components.home.form2.account": "账号",
+  "components.home.form2.qq": "QQ",
+  "components.home.form2.wx": "微信",
+  "components.home.form2.phone": "电话",
+  "components.home.form2.submit": "预约"
 }
