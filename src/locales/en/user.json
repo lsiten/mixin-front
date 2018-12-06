@@ -1,0 +1,5 @@
+{
+  "components.user.account": "account",
+  "components.user.money": "money",
+  "components.user.protected": "protected"
+}

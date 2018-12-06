@@ -1,0 +1,5 @@
+{
+  "components.user.account": "账号",
+  "components.user.money": "余额",
+  "components.user.protected": "保护中"
+}
