@@ -13,7 +13,7 @@
             <i class="iconfont icon-gonggao"></i>
           </span>
           <marquee>
-            <marquee-item v-for="(notice, key) in notices" :key="key">{{ notice.title}}</marquee-item>
+            <marquee-item v-for="(notice, key) in notices" :key="key">{{ notice.domain}}</marquee-item>
           </marquee>
         </cell>
       </group>
@@ -42,7 +42,7 @@
                   <td>{{(index + 1)}}</td>
                   <td>{{item.domain}}</td>
                   <td>{{item.cost}}</td>
-                  <td><span class="lsiten-click-able">{{ $t('components.home.wantBuy') }}</span></td>
+                  <td><span class="lsiten-click-able" @click="wantBuy(item.id)">{{ $t('components.home.wantBuy') }}</span></td>
                 </tr>
               </tbody>
             </x-table>
@@ -85,155 +85,7 @@
 
 <script>
 import { Radio, Group, Swiper, SwiperItem, Cell, Marquee, MarqueeItem, Scroller, ButtonTab, ButtonTabItem, XTable, XInput, XButton } from 'vux'
-
-const baseList = [{
-  url: 'javascript:',
-  img: 'https://ww1.sinaimg.cn/large/663d3650gy1fq66vvsr72j20p00gogo2.jpg',
-  title: '送你一朵fua'
-}, {
-  url: 'javascript:',
-  img: 'https://ww1.sinaimg.cn/large/663d3650gy1fq66vw1k2wj20p00goq7n.jpg',
-  title: '送你一辆车'
-}, {
-  url: 'javascript:',
-  img: 'https://ww1.sinaimg.cn/large/663d3650gy1fq66vw50iwj20ff0aaaci.jpg',
-  title: '送你一次旅行'
-}]
-
-const bastDataDomain = [
-  {
-    id: 1,
-    domain: 'lsiten.cn',
-    cost: '0.012XIN',
-    status: 0
-  },
-  {
-    id: 2,
-    domain: 'yizhao.cn',
-    cost: '0.012XIN',
-    status: 0
-  },
-  {
-    id: 3,
-    domain: 'yizhao.cn',
-    cost: '0.012XIN',
-    status: 0
-  },
-  {
-    id: 2,
-    domain: 'yizhao.cn',
-    cost: '0.012XIN',
-    status: 0
-  },
-  {
-    id: 2,
-    domain: 'yizhao.cn',
-    cost: '0.012XIN',
-    status: 0
-  },
-  {
-    id: 2,
-    domain: 'yizhao.cn',
-    cost: '0.012XIN',
-    status: 0
-  },
-  {
-    id: 2,
-    domain: 'yizhao.cn',
-    cost: '0.012XIN',
-    status: 0
-  },
-  {
-    id: 2,
-    domain: 'yizhao.cn',
-    cost: '0.012XIN',
-    status: 0
-  },
-  {
-    id: 2,
-    domain: 'yizhao.cn',
-    cost: '0.012XIN',
-    status: 0
-  },
-  {
-    id: 2,
-    domain: 'yizhao.cn',
-    cost: '0.012XIN',
-    status: 0
-  },
-  {
-    id: 2,
-    domain: 'yizhao.cn',
-    cost: '0.012XIN',
-    status: 0
-  },
-  {
-    id: 2,
-    domain: 'yizhao.cn',
-    cost: '0.012XIN',
-    status: 0
-  },
-  {
-    id: 2,
-    domain: 'yizhao.cn',
-    cost: '0.012XIN',
-    status: 0
-  },
-  {
-    id: 2,
-    domain: 'yizhao.cn',
-    cost: '0.012XIN',
-    status: 0
-  },
-  {
-    id: 2,
-    domain: 'yizhao.cn',
-    cost: '0.012XIN',
-    status: 0
-  },
-  {
-    id: 2,
-    domain: 'yizhao.cn',
-    cost: '0.012XIN',
-    status: 0
-  },
-  {
-    id: 2,
-    domain: 'yizhao.cn',
-    cost: '0.012XIN',
-    status: 0
-  },
-  {
-    id: 2,
-    domain: 'yizhao.cn',
-    cost: '0.012XIN',
-    status: 0
-  },
-  {
-    id: 2,
-    domain: 'yizhao.cn',
-    cost: '0.012XIN',
-    status: 0
-  },
-  {
-    id: 2,
-    domain: 'yizhao.cn',
-    cost: '0.012XIN',
-    status: 0
-  },
-  {
-    id: 2,
-    domain: 'yizhao.cn',
-    cost: '0.012XIN',
-    status: 0
-  },
-  {
-    id: 2,
-    domain: 'yizhao.cn',
-    cost: '0.012XIN',
-    status: 0
-  }
-]
+import {mapGetters} from 'vuex'
 export default {
   name: 'home-index',
   components: {
@@ -273,20 +125,7 @@ export default {
       noShowAll: false,
       scrollTop: 224,
       showSelect: 0,
-      focusData: baseList,
       focusIndex: 0,
-      notices: [
-        {
-          title: '测试1'
-        },
-        {
-          title: '测试2'
-        },
-        {
-          title: '测试3'
-        }
-      ],
-      domains: bastDataDomain,
       haveForm: {
         domain: '',
         account: '',
@@ -304,17 +143,34 @@ export default {
       }
     }
   },
+  computed: {
+    ...mapGetters({
+      focusData: 'home_get_banners',
+      notices: 'home_get_hots',
+      domains: 'home_get_domain_list',
+      current_page: 'home_get_current_page'
+    })
+  },
   created () {
-    this.$vux.bus && this.$vux.bus.$on('vux:after-view-enter', this.init)
+    this.init()
   },
   destroyed () {
     this.$vux.bus && this.$vux.bus.$off('vux:after-view-enter', this.init)
   },
   methods: {
     init () {
-      console.log(1)
+      this.$store.dispatch('home_get_banner', [])
+      this.$store.dispatch('home_get_hots', [])
+      this.$store.dispatch('home_get_domain_list', {
+        'current_page': this.current_page,
+        'page_size': 30,
+        'refresh': 0
+      })
     },
     onFocusIndexChange: function (lang) {
+    },
+    wantBuy (id) {
+      console.log(id)
     },
     showAllClick () {
       this.noShowAll = false
